@@ -35,7 +35,7 @@ def menu_principal():
         elif opcion == "3":
             crear_factura()
         elif opcion == "4":
-            mostrar_usuarios_todos()
+            mostrar_todos_usuarios()
         elif opcion == "5":
             mostrar_facturas_usuario()
         elif opcion == "6":
@@ -80,7 +80,7 @@ def registrar_usuario():
 def buscar_usuario():
     print("\n=== BUSCAR USUARIO ===")
     print("1. Buscar por email\n2. Buscar por nombre\n")
-    opcion = input("Seleccione método de búsqueda: ").strip()
+    metodo = input("Seleccione método de búsqueda: ").strip()
 
     if metodo == "1":
         email = input("Ingrese email: ").strip()
@@ -144,7 +144,7 @@ def crear_factura():
     print(f"Estado: {estado}")
 
 # == 4. Usuarios ==
-def buscar_usuario():
+def mostrar_todos_usuarios():
     print("\n=== Lista DE USUARIOS ===")
     cursor.execute("SELECT * FROM usuarios")
     usuarios = cursor.fetchall()
