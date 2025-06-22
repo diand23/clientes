@@ -39,7 +39,7 @@ def menu_principal():
         elif opcion == "5":
             mostrar_facturas_usuario()
         elif opcion == "6":
-            resumen_financioero_usuario()
+            resumen_financiero_usuario()
         elif opcion == "7":
             print("Saliendo del programa...")
             break
@@ -48,6 +48,15 @@ def menu_principal():
 
 # == 1. Regitrar Usuario ==
 def registrar_usuario():
+    import re  # por si aún no está importado
+
+    def email_valido(email):
+        return re.match(r"^[\w\.-]+@[\w\.-]+\.\w+$", email)
+
+    def email_existe(email):
+        cursor.execute("SELECT * FROM usuarios WHERE email = %s", (email,))
+        return cursor.fetchone() is not None
+    
     print("\n=== REGISTRO DE NUEVO USUARIO ===")
     nombre = input("Ingrese nombre: ").strip()
     apellidos = input("Ingrese apellidos: ").strip()
@@ -117,7 +126,13 @@ def crear_factura():
     else:
         print(f"\nUsuario encontrado: {usuario['nombre']} {usuario['apellidos']}")
         descripcion = input("Ingrese descripción del servicio/producto: ").strip()
-
+        try:
+            monto = float(input("Ingrese monto: "))
+            if monto <= 0:
+                raise ValueError
+        except ValueError:
+            print("Monto inválido. Debe ser un número positivo.")
+            return
     print("Seleccione estado:")
     print("1. Pendiente\n2. Pagada\n3. Cancelada")
     estado_opcion = input("Estado: ")
@@ -194,7 +209,7 @@ def mostrar_facturas_usuario():
     print(f"Monto pendiente: ${pendientes:.2f}")
 
 # == 6. Resumen Financiero por Usuario ==
-def resumen_financiero():
+def resumen_financiero_usuario():
     print("\n=== RESUMEN FINANCIERO ===")
     cursor.execute("SELECT * FROM usuarios")
     usuarios = cursor.fetchall()
@@ -226,6 +241,7 @@ def resumen_financiero():
     print(f"Ingresos recibidos: ${total_ingresos:.2f}")
     print(f"Ingresos pendientes: ${total_pendientes:.2f}")
 
+# == Menú principal ==
 def menu():
     while True:
         print("\n=== SISTEMA CRM ===")
