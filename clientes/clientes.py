@@ -94,10 +94,11 @@ def buscar_usuario():
 
     if metodo == "1":
         email = input("Ingrese email: ").strip()
-        cursor.execute("SELECT * FROM usuarios WHERE email = %s", (email,))
+        cursor.execute("SELECT * FROM usuarios WHERE email = ?", (email,))
+
     elif metodo == "2":
         nombre = input("Ingrese nombre: ").strip()
-        cursor.execute("SELECT * FROM usuarios WHERE nombre LIKE %s", (f"%{nombre}%",))
+        cursor.execute("SELECT * FROM usuarios WHERE nombre LIKE ?", (f"%{nombre}%",))
     else:
         print("Opción inválida.")
         return
