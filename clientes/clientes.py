@@ -1,23 +1,24 @@
-"""CODIGO DE FUNCIONES"""
-import mysql.connector
-import re
-from datetime import datetime
+"""LIBRERIAS"""
+import sqlite3
 
 """CONEXIÓN A LA BASE DE DATOS"""
-conexion = mysql.connector.connect(
-    host="localhost",
-    user="diand23",
-    password="diandra1988",
-    database="crm_db"
-)
-cursor = conexion.cursor(dictionary=True)
+# Conexión a archivo SQLite (se crea si no existe)
+conexion = sqlite3.connect('clientes.db')
 
+# Para que los resultados sean diccionarios (igual que dictionary=True en MySQL)
+conexion.row_factory = sqlite3.Row
+cursor = conexion.cursor()
+
+"""Verificación de conexión"""
+cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+tablas = cursor.fetchall()
+print("Tablas en la base de datos:", tablas)
 
 """FUNCIONES """
 # == Menú principal ==
 def menu_principal():
     while True:
-        print("\n===SISTEMA CRM ===")
+        print("\n=== SISTEMA CRM ===")
         print("1. Registrar nuevo usuario")
         print("2. Buscar usuario")
         print("3. Crear factura para ususrio")
@@ -242,7 +243,7 @@ def resumen_financiero_usuario():
     print(f"Ingresos pendientes: ${total_pendientes:.2f}")
 
 # == Menú principal ==
-def menu():
+def menu_principal():
     while True:
         print("\n=== SISTEMA CRM ===")
         print("1. Registrar nuevo usuario")
@@ -271,6 +272,6 @@ def menu():
         else:
             print("Opción inválida.")
 
-menu()
+menu_principal()
 cursor.close()
 conexion.close()

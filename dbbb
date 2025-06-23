@@ -1,0 +1,16 @@
+import mysql.connector
+
+conexion = mysql.connector.connect(
+    host="localhost",
+    user="diand23",
+    password="diandra1988",
+    database="clientes"
+)
+cursor = conexion.cursor(dictionary=True)
+
+cursor.execute("SHOW TABLES")
+tablas = cursor.fetchall()
+print("Tablas en la base de datos:", tablas)
+
+cursor.close()
+conexion.close()
