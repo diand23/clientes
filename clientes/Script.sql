@@ -49,6 +49,6 @@ VALUES
 (9, 'Venta de hardware', 1800.00, 'Pagada'),
 (10, 'Capacitación técnica', 850.00, 'Pendiente');
 
--- En caso de tener que eliminar las tablas para volver a crearlas
-DROP TABLE facturas;
-DROP TABLE usuarios;
+-- Para ver las tablas de datos
+SELECT * FROM clientes.usuarios;
+SELECT * FROM clientes.facturas;
