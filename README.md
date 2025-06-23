@@ -77,4 +77,82 @@ python clientes\clientes.py
 
 ---
 
-¿Quieres que te genere un `requirements.txt` para guardar tus dependencias o un `setup.sh` para automatizar todo esto?
+
+
+
+
+Gracias por el detalle. Aunque antes funcionaba, ahora estás viendo este error:
+
+```
+ModuleNotFoundError: No module named 'mysql'
+```
+
+Esto indica que **el entorno actual donde estás ejecutando `clientes.py` no tiene instalado `mysql-connector-python`**, aunque tú lo creas instalado.
+
+---
+
+### ✅ Solución Paso a Paso
+
+#### 1. Asegúrate de estar dentro del entorno virtual
+
+En PowerShell, deberías ver algo como esto al inicio del prompt:
+
+```powershell
+(venv) PS C:\Users\merlo\OneDrive\Desktop\clientes>
+```
+
+Si **no** ves el `(venv)`, actívalo:
+
+```powershell
+.\venv\Scripts\Activate.ps1
+```
+
+---
+
+#### 2. Instala el módulo dentro del entorno virtual
+
+Con el entorno activado, instala el conector de MySQL:
+
+```powershell
+pip install mysql-connector-python
+```
+
+Verifica que se instaló con:
+
+```powershell
+pip show mysql-connector-python
+```
+
+Debería mostrarte información como:
+
+```
+Name: mysql-connector-python
+Version: x.x.x
+Location: ...venv\Lib\site-packages
+```
+
+---
+
+#### 3. Vuelve a ejecutar tu script
+
+Estando dentro del entorno, vuelve a ejecutar el script desde el directorio raíz del proyecto:
+
+```powershell
+python clientes\clientes.py
+```
+
+---
+
+### ✅ Si sigue fallando
+
+* Asegúrate de **no estar usando Anaconda** para ejecutar el script (eso parece estar ocurriendo por el error anterior que mencionaba `anaconda3\python.exe`)
+* Si quieres estar completamente seguro, fuerza a usar el Python del entorno virtual con:
+
+```powershell
+where python
+```
+
+Deberías ver la ruta del `venv`, no la de `Anaconda`.
+
+
+
