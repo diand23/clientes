@@ -1,12 +1,18 @@
-# Generación de un CRM
+# 🧩 Generación de un CRM
 
-Un **CRM** te ayuda a organizar y centralizar la información de tus clientes, mejorar la comunicación, automatizar tareas, analizar datos para tomar mejores decisiones y aumentar las ventas ofreciendo un mejor servicio. Para su creación mostraré lo necesario para que se ejecute correctamente las funcionalidades.
+Un **CRM** te ayuda a organizar y centralizar la información de tus clientes, mejorar la 
+comunicación, automatizar tareas, analizar datos para tomar mejores decisiones y aumentar las 
+ventas ofreciendo un mejor servicio. Para su creación mostraré lo necesario para que se ejecute 
+correctamente las funcionalidades.
 
 ### Generar BBDD
 
-El primer paso ha sido la creación de la *BBDD* en **SQLLite Studio**, donde se ha indicado en la creación de las tablas *usuaios* y *facturas* los campos obligatorios y los opcionales a rellenar. Además, se ha indicado que el *Id_cliente*  de la tabla *usuarios* se añada automáticamen, para evitar posibles errores al añadir nuevos usuarios.
+El primer paso ha sido la creación de la *BBDD* en **SQLLite Studio**, donde se ha indicado en 
+la creación de las tablas *usuaios* y *facturas* los campos obligatorios y los opcionales a 
+rellenar. Además, se ha indicado que el *Id_cliente*  de la tabla *usuarios* se añada 
+automáticamen, para evitar posibles errores al añadir nuevos usuarios.
 
-### CRM de Clientes
+### 📁 CRM de Clientes
 
 En segundo lugar, pasaremos a generar las funcionalidades requeridas de este CRM, las cuales 
 aparecen en **clientes.py**, aplicando las intalaciones y conexiones necesarias para conectar la 
@@ -14,6 +20,7 @@ aparecen en **clientes.py**, aplicando las intalaciones y conexiones necesarias 
 
 Este proyecto presenta la siguiente estructura de archivos:
 
+```
 Clientes/
 |
 ├── clientes/
@@ -27,6 +34,7 @@ Clientes/
 ├── setup.py
 ├── requirements.txt
 └── README.md
+```
 
 ### Crear el entorno virtual
 
@@ -56,13 +64,19 @@ En consecuencia, se debería ver algo como esto en tu línea de comandos:
 ```
 En este espacio probaremos que nuestro **CRM** funciona.
 
-### Indicaciones 
+### 📦 Indicaciones de uso
 
-Para utilizar correctamente el sistema, es importante entender que al realizar consultas de información de usuarios (por ejemplo, buscando por nombre o correo electrónico), se obtienen los datos deseados sin problemas.
+Para utilizar correctamente el sistema, es importante entender que al realizar consultas de 
+información de usuarios (por ejemplo, buscando por nombre o correo electrónico), se obtienen los 
+datos deseados sin problemas.
 
-Sin embargo, cuando se agregan nuevos registros, como nuevos usuarios o nuevas facturas de clientes, no basta con insertar la información en la base de datos. Es necesario ejecutar un *commit* para que esos cambios se confirmen y se guarden de forma permanente.
+Sin embargo, cuando se agregan nuevos registros, como nuevos usuarios o nuevas facturas de 
+clientes, no basta con insertar la información en la base de datos. Es necesario ejecutar un 
+*commit* para que esos cambios se confirmen y se guarden de forma permanente.
 
-Solo después de realizar este *commit*, la base de datos se actualiza realmente y los nuevos usuarios o facturas estarán disponibles para futuras consultas y aparecerán reflejados en el sistema.
+Solo después de realizar este *commit*, la base de datos se actualiza realmente y los nuevos 
+usuarios o facturas estarán disponibles para futuras consultas y aparecerán reflejados en el 
+sistema.
 
 
 
