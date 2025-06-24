@@ -1,6 +1,6 @@
 -- Crear base de datos (opcional, si tu gestor lo permite)
-CREATE DATABASE clientes;
-USE datos_clientes;
+--CREATE DATABASE clientes;
+--USE datos_clientes;
 
 -- Tabla de usuarios
 CREATE TABLE usuarios (
@@ -49,8 +49,4 @@ VALUES
 (9, 'Venta de hardware', 1800.00, 'Pagada'),
 (10, 'Capacitación técnica', 850.00, 'Pendiente');
 
---Para guardar los cambios:
-conexion.commit()
 
-cursor.close()
-conexion.close()
