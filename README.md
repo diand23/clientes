@@ -1,15 +1,35 @@
-# clientes
+# Generación de un CRM
 
-Instalar la librería, para conectar la base de datos con python
-pip install mysql-connector-python
+Un **CRM** te ayuda a organizar y centralizar la información de tus clientes, mejorar la comunicación, automatizar tareas, analizar datos para tomar mejores decisiones y aumentar las ventas ofreciendo un mejor servicio. Para su creación mostraré lo necesario para que se ejecute correctamente las funcionalidades.
 
-Entiendo. Vamos paso a paso para crear y activar correctamente un **entorno virtual** en Windows y evitar errores.
+### Generar BBDD
 
----
+El primer paso ha sido la creación de la *BBDD* en **SQLLite Studio**, donde se ha indicado en la creación de las tablas *usuaios* y *facturas* los campos obligatorios y los opcionales a rellenar. Además, se ha indicado que el *Id_cliente*  de la tabla *usuarios* se añada automáticamen, para evitar posibles errores al añadir nuevos usuarios.
 
-### ✅ 1. Crear el entorno virtual
+### CRM de Clientes
 
-En la carpeta donde tengas tu proyecto (`C:\Users\merlo\OneDrive\Desktop\clientes`), abre PowerShell y ejecuta:
+En segundo lugar, pasaremos a generar las funcionalidades requeridas de este CRM, las cuales aparecen en **clientes.py**, aplicando las intalaciones y conexiones necesarias para conectar la *BBDD*.
+
+Este proyecto presenta la siguiente estructura de archivos:
+Clientes/
+├── clientes/
+│   └── __init__.py
+│   ├── clientes.py
+|   ├── Script.sql
+|   ├── inicializador_db.py
+|   └── clientes.db
+├── data/
+│   └── datos_clientes.py
+├── setup.py
+├── requirements.txt
+└── README.md
+
+### Crear el entorno virtual
+
+Lo esencial es trabajar en un entorno virtual para no sobrecargar de librerías nuestro
+sistema, debido a que algunas librerías no son compatibles entre sí y pueden generar
+conflictos si se instalan juntas. Por tanto, generamos un entorno virtual en la
+carpeta donde se tiene el proyecto con el siguiente código:
 
 ```powershell
 python -m venv venv
@@ -19,140 +39,27 @@ Esto creará una carpeta llamada `venv` que contiene el entorno virtual.
 
 ---
 
-### ✅ 2. Activar el entorno virtual
-
-Una vez creado, actívalo con:
+Una vez creado, se activará con:
 
 ```powershell
 .\venv\Scripts\Activate.ps1
 ```
 
-Después de eso, deberías ver algo como esto en tu línea de comandos:
+En consecuencia, se debería ver algo como esto en tu línea de comandos:
 
 ```powershell
 (venv) PS C:\Users\merlo\OneDrive\Desktop\clientes>
 ```
+En este espacio probaremos que nuestro **CRM** funciona.
 
----
+### Indicaciones 
 
-### ⚠️ Si te da un error de permisos (ExecutionPolicy):
+Para utilizar correctamente el sistema, es importante entender que al realizar consultas de información de usuarios (por ejemplo, buscando por nombre o correo electrónico), se obtienen los datos deseados sin problemas.
 
-Windows puede bloquear la ejecución de scripts por seguridad. Si ves algo como:
+Sin embargo, cuando se agregan nuevos registros, como nuevos usuarios o nuevas facturas de clientes, no basta con insertar la información en la base de datos. Es necesario ejecutar un *commit* para que esos cambios se confirmen y se guarden de forma permanente.
 
-```
-execution of scripts is disabled on this system
-```
+Solo después de realizar este *commit*, la base de datos se actualiza realmente y los nuevos usuarios o facturas estarán disponibles para futuras consultas y aparecerán reflejados en el sistema.
 
-Solución temporal (solo para esta sesión de PowerShell):
-
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
-```
-
-Y luego vuelve a ejecutar:
-
-```powershell
-.\venv\Scripts\Activate.ps1
-```
-
----
-
-### ✅ 3. Instalar dependencias dentro del entorno
-
-Ahora que estás dentro del entorno virtual, instala el módulo necesario:
-
-```powershell
-pip install mysql-connector-python
-```
-
----
-
-### ✅ 4. Ejecutar tu script
-
-Con el entorno activado:
-
-```powershell
-python clientes\clientes.py
-```
-
----
-
-
-
-
-
-Gracias por el detalle. Aunque antes funcionaba, ahora estás viendo este error:
-
-```
-ModuleNotFoundError: No module named 'mysql'
-```
-
-Esto indica que **el entorno actual donde estás ejecutando `clientes.py` no tiene instalado `mysql-connector-python`**, aunque tú lo creas instalado.
-
----
-
-### ✅ Solución Paso a Paso
-
-#### 1. Asegúrate de estar dentro del entorno virtual
-
-En PowerShell, deberías ver algo como esto al inicio del prompt:
-
-```powershell
-(venv) PS C:\Users\merlo\OneDrive\Desktop\clientes>
-```
-
-Si **no** ves el `(venv)`, actívalo:
-
-```powershell
-.\venv\Scripts\Activate.ps1
-```
-
----
-
-#### 2. Instala el módulo dentro del entorno virtual
-
-Con el entorno activado, instala el conector de MySQL:
-
-```powershell
-pip install mysql-connector-python
-```
-
-Verifica que se instaló con:
-
-```powershell
-pip show mysql-connector-python
-```
-
-Debería mostrarte información como:
-
-```
-Name: mysql-connector-python
-Version: x.x.x
-Location: ...venv\Lib\site-packages
-```
-
----
-
-#### 3. Vuelve a ejecutar tu script
-
-Estando dentro del entorno, vuelve a ejecutar el script desde el directorio raíz del proyecto:
-
-```powershell
-python clientes\clientes.py
-```
-
----
-
-### ✅ Si sigue fallando
-
-* Asegúrate de **no estar usando Anaconda** para ejecutar el script (eso parece estar ocurriendo por el error anterior que mencionaba `anaconda3\python.exe`)
-* Si quieres estar completamente seguro, fuerza a usar el Python del entorno virtual con:
-
-```powershell
-where python
-```
-
-Deberías ver la ruta del `venv`, no la de `Anaconda`.
 
 
 
