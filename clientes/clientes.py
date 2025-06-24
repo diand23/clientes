@@ -5,7 +5,7 @@ import re
 
 """CONEXIÓN A LA BASE DE DATOS"""
 # Conexión a archivo SQLite (se crea si no existe)
-db_path = r"C:\Users\merlo\datos_clientes.db"
+db_path = r"C:/Users/merlo/OneDrive/Desktop/clientes/data/datos_clientes.db"
 conexion = sqlite3.connect(db_path)
 
 # Para que los resultados sean diccionarios (igual que dictionary=True en MySQL)
