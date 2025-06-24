@@ -13,7 +13,9 @@ aparecen en **clientes.py**, aplicando las intalaciones y conexiones necesarias 
 *BBDD*.
 
 Este proyecto presenta la siguiente estructura de archivos:
+
 Clientes/
+|
 ├── clientes/
 │   └── __init__.py
 │   ├── clientes.py
