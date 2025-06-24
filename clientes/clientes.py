@@ -3,7 +3,7 @@ import sqlite3
 
 """CONEXIÓN A LA BASE DE DATOS"""
 # Conexión a archivo SQLite (se crea si no existe)
-conexion = sqlite3.connect('clientes.db')
+conexion = sqlite3.connect('datos_clientes.db')
 
 # Para que los resultados sean diccionarios (igual que dictionary=True en MySQL)
 conexion.row_factory = sqlite3.Row
