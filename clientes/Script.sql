@@ -1,6 +1,6 @@
 -- Crear base de datos (opcional, si tu gestor lo permite)
--- CREATE DATABASE clientes;
-USE clientes;
+CREATE DATABASE clientes;
+USE datos_clientes;
 
 -- Tabla de usuarios
 CREATE TABLE usuarios (
@@ -16,10 +16,10 @@ CREATE TABLE usuarios (
 
 -- Tabla de facturas
 CREATE TABLE facturas (
-    numero_factura INT AUTO_INCREMENT PRIMARY KEY,
+    numero_factura INTEGER PRIMARY KEY AUTOINCREMENT,
     id_cliente INT NOT NULL,
     fecha_emision DATETIME DEFAULT CURRENT_TIMESTAMP,
-    descripcion  VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(100) NOT NULL,
     monto DECIMAL(10, 2) NOT NULL CHECK (monto > 0),
     estado TEXT NOT NULL CHECK (estado IN ('Pendiente', 'Pagada', 'Cancelada')),
     FOREIGN KEY (id_cliente) REFERENCES usuarios(id_cliente) ON DELETE CASCADE
