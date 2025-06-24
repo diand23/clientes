@@ -8,7 +8,9 @@ El primer paso ha sido la creación de la *BBDD* en **SQLLite Studio**, donde se
 
 ### CRM de Clientes
 
-En segundo lugar, pasaremos a generar las funcionalidades requeridas de este CRM, las cuales aparecen en **clientes.py**, aplicando las intalaciones y conexiones necesarias para conectar la *BBDD*.
+En segundo lugar, pasaremos a generar las funcionalidades requeridas de este CRM, las cuales 
+aparecen en **clientes.py**, aplicando las intalaciones y conexiones necesarias para conectar la 
+*BBDD*.
 
 Este proyecto presenta la siguiente estructura de archivos:
 Clientes/
