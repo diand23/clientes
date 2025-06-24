@@ -5,7 +5,7 @@ comunicación, automatizar tareas, analizar datos para tomar mejores decisiones 
 ventas ofreciendo un mejor servicio. Para su creación mostraré lo necesario para que se ejecute 
 correctamente las funcionalidades.
 
-### Generar BBDD
+### 🗄️ Generar BBDD
 
 El primer paso ha sido la creación de la *BBDD* en **SQLLite Studio**, donde se ha indicado en 
 la creación de las tablas *usuaios* y *facturas* los campos obligatorios y los opcionales a 
@@ -36,7 +36,7 @@ Clientes/
 └── README.md
 ```
 
-### Crear el entorno virtual
+### 🐍 Crear el entorno virtual
 
 Lo esencial es trabajar en un entorno virtual para no sobrecargar de librerías nuestro
 sistema, debido a que algunas librerías no son compatibles entre sí y pueden generar
@@ -64,7 +64,7 @@ En consecuencia, se debería ver algo como esto en tu línea de comandos:
 ```
 En este espacio probaremos que nuestro **CRM** funciona.
 
-### 📦 Indicaciones de uso
+### 📋 Indicaciones de uso
 
 Para utilizar correctamente el sistema, es importante entender que al realizar consultas de 
 información de usuarios (por ejemplo, buscando por nombre o correo electrónico), se obtienen los 
