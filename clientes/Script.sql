@@ -3,15 +3,14 @@
 --USE datos_clientes;
 
 -- Tabla de usuarios
-CREATE TABLE IF NOT EXISTS  usuarios (
-    id_cliente INT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS usuarios (
+    id_cliente INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre VARCHAR(20) NOT NULL,
     apellidos VARCHAR(20) NOT NULL,
-    email  VARCHAR(100) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
     telefono VARCHAR(20),
     direccion TEXT,
-    fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP
-    NOT NULL
+    fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
 -- Tabla de facturas

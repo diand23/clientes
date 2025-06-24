@@ -270,7 +270,7 @@ def menu_principal():
         elif opcion == "5":
             mostrar_facturas_usuario()
         elif opcion == "6":
-            resumen_financiero()
+            resumen_financiero_usuario()
         elif opcion == "7":
             break
         else:
