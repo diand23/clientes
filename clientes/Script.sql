@@ -49,6 +49,8 @@ VALUES
 (9, 'Venta de hardware', 1800.00, 'Pagada'),
 (10, 'Capacitación técnica', 850.00, 'Pendiente');
 
--- Para ver las tablas de datos
-SELECT * FROM clientes.usuarios;
-SELECT * FROM clientes.facturas;
+--Para guardar los cambios:
+conexion.commit()
+
+cursor.close()
+conexion.close()

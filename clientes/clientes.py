@@ -1,9 +1,12 @@
 """LIBRERIAS"""
 import sqlite3
+from datetime import datetime
+import re
 
 """CONEXIÓN A LA BASE DE DATOS"""
 # Conexión a archivo SQLite (se crea si no existe)
-conexion = sqlite3.connect('datos_clientes.db')
+db_path = r"C:\Users\merlo\datos_clientes.db"
+conexion = sqlite3.connect(db_path)
 
 # Para que los resultados sean diccionarios (igual que dictionary=True en MySQL)
 conexion.row_factory = sqlite3.Row
@@ -55,7 +58,7 @@ def registrar_usuario():
         return re.match(r"^[\w\.-]+@[\w\.-]+\.\w+$", email)
 
     def email_existe(email):
-        cursor.execute("SELECT * FROM usuarios WHERE email = %s", (email,))
+        cursor.execute("SELECT * FROM usuarios WHERE email = ?", (email,))
         return cursor.fetchone() is not None
     
     print("\n=== REGISTRO DE NUEVO USUARIO ===")
@@ -77,7 +80,7 @@ def registrar_usuario():
     
     cursor.execute("""
         INSERT INTO usuarios (nombre, apellidos, email, telefono, direccion)
-        VALUES (%s, %s, %s, %s, %s)
+        VALUES (?, ?, ?, ?, ?)
     """, (nombre, apellidos, email, telefono, direccion))
     conexion.commit()
 
@@ -119,7 +122,7 @@ def buscar_usuario():
 def crear_factura():
     print("\n=== CREAR FACTURA ===")
     email = input("Ingrese email del usuario: ").strip()
-    cursor.execute("SELECT id_cliente, nombre, apellidos FROM usuarios WHERE email = %s", (email,))
+    cursor.execute("SELECT id_cliente, nombre, apellidos FROM usuarios WHERE email = ?", (email,))
     usuario = cursor.fetchone()
 
     if not usuario:
@@ -147,7 +150,7 @@ def crear_factura():
 
     cursor.execute("""
         INSERT INTO facturas (id_cliente, descripcion, monto, estado)
-        VALUES (%s, %s, %s, %s)
+        VALUES (?, ?, ?, ?)
     """, (usuario['id_cliente'], descripcion, monto, estado))
     conexion.commit()
     numero = cursor.lastrowid
@@ -185,13 +188,13 @@ def mostrar_todos_usuarios():
 def mostrar_facturas_usuario():
     print("\n=== FACTURAS POR USUARIO ===")
     email = input("Ingrese email del usuario: ").strip()
-    cursor.execute("SELECT id_cliente, nombre, apellidos FROM usuarios WHERE email = %s", (email,))
+    cursor.execute("SELECT id_cliente, nombre, apellidos FROM usuarios WHERE email = ?", (email,))
     usuario = cursor.fetchone()
 
     if not usuario:
         print("Usuario no encontrado.")
         return
-    cursor.execute("SELECT * FROM facturas WHERE id_cliente = %s", (usuario["id_cliente"],))
+    cursor.execute("SELECT * FROM facturas WHERE id_cliente = ?", (usuario["id_cliente"],))
     facturas = cursor.fetchall()
     print(f"\n--- FACTURAS DE {usuario['nombre']} {usuario['apellidos']} ---")
     total_facturado = 0
@@ -220,7 +223,7 @@ def resumen_financiero_usuario():
     total_pendientes = 0
 
     for usuario in usuarios:
-        cursor.execute("SELECT estado, monto FROM facturas WHERE id_cliente = %s", (usuario["id_cliente"],))
+        cursor.execute("SELECT estado, monto FROM facturas WHERE id_cliente = ?", (usuario["id_cliente"],))
         facturas = cursor.fetchall()
         total_usuario = sum(f["monto"] for f in facturas)
         pagadas = sum(f["monto"] for f in facturas if f["estado"] == "Pagada")
