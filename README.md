@@ -1,4 +1,4 @@
-# 🧩 Generación de un CRM
+# 🧩 Generar un CRM
 
 Un **CRM** te ayuda a organizar y centralizar la información de tus clientes, mejorar la 
 comunicación, automatizar tareas, analizar datos para tomar mejores decisiones y aumentar las 
