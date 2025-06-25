@@ -30,7 +30,7 @@ Clientes/
 |   ├── inicializador_db.py
 |   └── clientes.db
 ├── data/
-│   └── datos_clientes.py
+│   └── datos_clientes.db
 ├── setup.py
 ├── requirements.txt
 └── README.md
@@ -77,7 +77,4 @@ clientes, no basta con insertar la información en la base de datos. Es necesari
 Solo después de realizar este *commit*, la base de datos se actualiza realmente y los nuevos 
 usuarios o facturas estarán disponibles para futuras consultas y aparecerán reflejados en el 
 sistema.
-
-
-
 

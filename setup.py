@@ -17,7 +17,7 @@ setup(
     ],
     author="Diandra",
     author_email="diandmcm@gmail.com",
-    description="Un sistema CRM simple que maneja usuarios y facturas con MySQL.",
+    description="Un sistema CRM simple que maneja usuarios y facturas con SQL.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/diand23/crm_app",  # actualiza si usas otro nombre
