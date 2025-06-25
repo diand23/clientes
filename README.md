@@ -30,7 +30,7 @@ Clientes/
 |   ├── inicializador_db.py
 |   └── clientes.db
 ├── data/
-│   └── datos_clientes.py
+│   └── datos_clientes.db
 ├── setup.py
 ├── requirements.txt
 └── README.md
