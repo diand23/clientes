@@ -78,5 +78,3 @@ Solo después de realizar este *commit*, la base de datos se actualiza realmente
 usuarios o facturas estarán disponibles para futuras consultas y aparecerán reflejados en el 
 sistema.
 
-
-
