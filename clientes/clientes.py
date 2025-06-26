@@ -8,7 +8,7 @@ import re
 db_path = r"C:/Users/merlo/OneDrive/Desktop/clientes/data/datos_clientes.db"
 conexion = sqlite3.connect(db_path)
 
-# Para que los resultados sean diccionarios (igual que dictionary=True en MySQL)
+# Para que los resultados sean diccionarios
 conexion.row_factory = sqlite3.Row
 cursor = conexion.cursor()
 
@@ -20,6 +20,8 @@ print("Tablas en la base de datos:", tablas)
 """FUNCIONES """
 # == Menú principal ==
 def menu_principal():
+    ''''Se crea un bucle infinito para mostrar el menú principal y 
+    permitir al usuario seleccionar opciones.'''
     while True:
         print("\n=== SISTEMA CRM ===")
         print("1. Registrar nuevo usuario")
@@ -52,8 +54,6 @@ def menu_principal():
 
 # == 1. Regitrar Usuario ==
 def registrar_usuario():
-    import re  # por si aún no está importado
-
     def email_valido(email):
         return re.match(r"^[\w\.-]+@[\w\.-]+\.\w+$", email)
 
@@ -163,7 +163,7 @@ def crear_factura():
     print(f"Monto: ${monto:.2f}")
     print(f"Estado: {estado}")
 
-# == 4. Usuarios ==
+# == 4. Lista de Usuarios ==
 def mostrar_todos_usuarios():
     print("\n=== Lista DE USUARIOS ===")
     cursor.execute("SELECT * FROM usuarios")
@@ -248,6 +248,8 @@ def resumen_financiero_usuario():
 
 # == Menú principal ==
 def menu_principal():
+    ''''Se crea un bucle infinito para mostrar el menú principal y 
+    permitir al usuario seleccionar opciones.'''
     while True:
         print("\n=== SISTEMA CRM ===")
         print("1. Registrar nuevo usuario")
