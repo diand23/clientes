@@ -2,10 +2,18 @@
 import sqlite3
 from datetime import datetime
 import re
+from pathlib import Path
 
 """CONEXIÓN A LA BASE DE DATOS"""
 # Conexión a archivo SQLite (se crea si no existe)
-db_path = r"C:/Users/merlo/OneDrive/Desktop/clientes/data/datos_clientes.db"
+# Carpeta donde está el script
+BASE_DIR = Path(__file__).resolve().parent
+
+# Ruta relativa a la base de datos
+db_path = BASE_DIR / 'data' / 'datos_clientes.db'
+
+# Crear carpeta 'data' si no existe
+db_path.parent.mkdir(parents=True, exist_ok=True)
 conexion = sqlite3.connect(db_path)
 
 # Para que los resultados sean diccionarios
